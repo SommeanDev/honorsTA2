@@ -1,10 +1,11 @@
 import React from 'react';
-import { Image, StyleSheet, View, TextInput, Text, ScrollView, TouchableOpacity } from 'react-native';
+import {Image, StyleSheet, View, TextInput, Text, ScrollView, TouchableOpacity, Pressable} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Feather from '@expo/vector-icons/Feather';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import {router} from "expo-router";
 
 export default function HomeScreen() {
     return (
@@ -13,9 +14,15 @@ export default function HomeScreen() {
             <View style={styles.topBar}>
                 <Text style={styles.brand}>Sport Shoes</Text>
                 <View style={styles.iconsContainer}>
-                    <AntDesign name="hearto" size={24} color="black" style={styles.icon} />
-                    <Feather name="shopping-cart" size={24} color="black" style={styles.icon} />
-                    <Ionicons name="notifications-outline" size={24} color="black" style={styles.icon} />
+                    <Pressable onPress={() => router.push('/wishlist')}>
+                        <AntDesign name="hearto" size={24} color="black" style={styles.icon} />
+                    </Pressable>
+                    <Pressable>
+                        <Feather name="shopping-cart" size={24} color="black" style={styles.icon} />
+                    </Pressable>
+                    <Pressable onPress={() => router.push('/notifications')}>
+                        <Ionicons name="notifications-outline" size={24} color="black" style={styles.icon} />
+                    </Pressable>
                 </View>
             </View>
 
